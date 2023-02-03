@@ -68,18 +68,6 @@ dependencies {
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
         freeCompilerArgs += [
-                '-opt-in=kotlin.RequiresOptIn',
-
-                // https://youtrack.jetbrains.com/issue/KT-53488/Kotlin-170-Memory-manager-changes-resulting-in-OutOfMemory-issues-while-compiling
-                // Opt out of memory manager changes from Kotlin 1.7.0
-                '-Xallocator=std',
-        ]
-    }
-}
-
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-    kotlinOptions {
-        freeCompilerArgs += [
                 "-P",
                 "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" + rootDir + "/composemetrics"
         ]
